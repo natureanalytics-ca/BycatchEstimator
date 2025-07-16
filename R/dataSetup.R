@@ -281,7 +281,7 @@ bycatchSetup <- function(
       #                 output_dir=paste0(outDir,"/",shortName[run],"/"),
       #                 quiet = TRUE)
       #
-      # }
+      }
     }
 
     if(reportType == "pdf" || reportType == "both"){
