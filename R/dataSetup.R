@@ -274,14 +274,14 @@ bycatchSetup <- function(
 
       if(!is.null( mkd)){
 
-      rmarkdown::render(mkd,
-                      params=list(outDir=outDir, run = run),
-                      output_format = "html_document",
-                      output_file = paste0(shortName[run], "DataChecks.html"),
-                      output_dir=paste0(outDir,"/",shortName[run],"/"),
-                      quiet = TRUE)
-
-      }
+      # rmarkdown::render(mkd,
+      #                 params=list(outDir=outDir, run = run),
+      #                 output_format = "html_document",
+      #                 output_file = paste0(shortName[run], "DataChecks.html"),
+      #                 output_dir=paste0(outDir,"/",shortName[run],"/"),
+      #                 quiet = TRUE)
+      #
+      # }
     }
 
     if(reportType == "pdf" || reportType == "both"){
@@ -294,30 +294,29 @@ bycatchSetup <- function(
 
       if(!is.null( mkd)){
 
-      tryCatch({
-      rmarkdown::render(mkd,
-                      params=list(outDir=outDir, run = run),
-                      output_format = "pdf_document",
-                      output_file = paste0(shortName[run], "DataChecks.pdf"),
-                      output_dir=paste0(outDir,"/",shortName[run],"/"),
-                      quiet = TRUE)
-      },
-      error = function(e){
-        message("PDF rendering failed, reverting to html.")
-        rmarkdown::render(mkd,
-                          params=list(outDir=outDir, run = run),
-                          output_format = "html_document",
-                          output_file = paste0(shortName[run], " Data checks.html"),
-                          output_dir=paste0(outDir,"/",shortName[run],"/"),
-                          quiet = TRUE)
-           })
+      # tryCatch({
+      # rmarkdown::render(mkd,
+      #                 params=list(outDir=outDir, run = run),
+      #                 output_format = "pdf_document",
+      #                 output_file = paste0(shortName[run], "DataChecks.pdf"),
+      #                 output_dir=paste0(outDir,"/",shortName[run],"/"),
+      #                 quiet = TRUE)
+      # },
+      # error = function(e){
+      #   message("PDF rendering failed, reverting to html.")
+      #   rmarkdown::render(mkd,
+      #                     params=list(outDir=outDir, run = run),
+      #                     output_format = "html_document",
+      #                     output_file = paste0(shortName[run], " Data checks.html"),
+      #                     output_dir=paste0(outDir,"/",shortName[run],"/"),
+      #                     quiet = TRUE)
+      # })
 
-          }
-
-
-        }
+      }
 
     }
+
+  }
 
   #Clean up: delete the figures/ directory after rendering
   if(!is.null(mkd)) {
