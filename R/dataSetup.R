@@ -274,13 +274,16 @@ bycatchSetup <- function(
 
       if(!is.null( mkd)){
 
-      # rmarkdown::render(mkd,
-      #                 params=list(outDir=outDir, run = run),
-      #                 output_format = "html_document",
-      #                 output_file = paste0(shortName[run], "DataChecks.html"),
-      #                 output_dir=paste0(outDir,"/",shortName[run],"/"),
-      #                 quiet = TRUE)
-      #
+      tempReport <- file.path(tempdir(), "printBycatchSetup.Rmd")
+      file.copy(mkd, tempReport, overwrite = TRUE)
+
+      rmarkdown::render(tempReport,
+                      params=list(outDir=outDir, run = run),
+                      output_format = "html_document",
+                      output_file = paste0(shortName[run], "DataChecks.html"),
+                      output_dir=paste0(outDir,"/",shortName[run],"/"),
+                      quiet = TRUE)
+
       }
     }
 
